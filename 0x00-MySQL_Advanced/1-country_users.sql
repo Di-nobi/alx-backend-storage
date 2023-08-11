@@ -1,0 +1,7 @@
+-- A sql script that creates a table users
+CREATE TABLE IF NOT EXISTS users(
+    id INT  NOT NULL AUTO_INCREMENT PRIMARY kEY,
+    email varchar(255),
+    name varchar(255),
+    country ENUM('US', 'CO', 'TN') DEFAULT  'US' NOT NULL 
+)
