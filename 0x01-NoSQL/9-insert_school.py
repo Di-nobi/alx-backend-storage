@@ -2,5 +2,5 @@
 """A python function that inserts a new document in a collections based kwargs"""
 def insert_school(mongo_collection, **kwargs):
     """Inserts the new document in a collection"""
-    doc_id =  mongo_collection.insert(kwargs)
+    doc_id =  mongo_collection.insert_one(kwargs)
     return doc_id
