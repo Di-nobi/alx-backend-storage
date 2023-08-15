@@ -6,9 +6,9 @@ if __name__ == "__main__":
     school_collection = client.logs.nginx
     num = school_collection.count_documents({})
     print(f"{num} logs")
-    method = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
     print("Methods:")
-    for met in method:
-        print("\tmethod {}: {}".format(met, school_collection.count_documents({"met": met})))
+    for method in methods:
+        print("\tmethod {}: {}".format(method, school_collection.count_documents({"method": method})))
     num2 = school_collection.count_documents({"path": "/status"})
     print(f"{num2} status check")
