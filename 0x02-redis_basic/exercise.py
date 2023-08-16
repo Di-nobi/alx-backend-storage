@@ -23,6 +23,6 @@ class Cache():
     def get_str(self, key: str) -> str:
         """Automatically parametrize Cache.get with the correct conversion function"""
         return self._redis.get(key).decode("utf-8")
-    def get_str(self, key: str) -> int:
+    def get_int(self, key: str) -> int:
         """Automatically parametrize Cache.get with the correct conversion function"""
         return int(self._redis.get(key)).decode("utf-8")
