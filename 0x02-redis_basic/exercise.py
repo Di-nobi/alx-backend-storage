@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """"""
 import redis
-from typing import Union, List
+from typing import Union, List, Callable, Optional
 import uuid
 
 class Cache():
@@ -14,3 +14,15 @@ class Cache():
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
+    def get(self, key: str, fn: Optional[Callable]) -> Union[str, bytes, int, float]:
+        """Creates a get method that take a key string argument and an optional Callable argument named fn"""
+        num = self._redis.get(key)
+        if fn:
+            num = fn(num)
+        return num
+    def get_str(self, key: str) -> str:
+        """Automatically parametrize Cache.get with the correct conversion function"""
+        return self._redis.get(key).decode("utf-8")
+    def get_str(self, key: str) -> int:
+        """Automatically parametrize Cache.get with the correct conversion function"""
+        return int(self._redis.get(key)).decode("utf-8")
