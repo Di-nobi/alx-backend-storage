@@ -3,6 +3,7 @@
 import redis
 from typing import Union, List, Callable, Optional
 import uuid
+def count_calls(method: Callable) -> Callable:
 
 class Cache():
     """Initialization of the instance for redis"""
@@ -22,7 +23,7 @@ class Cache():
         return num
     def get_str(self, key: str) -> str:
         """Automatically parametrize Cache.get with the correct conversion function"""
-        return self._redis.get(key).decode("utf-8")
+        return str(self._redis.get(key).decode("utf-8"))
     def get_int(self, key: str) -> int:
         """Automatically parametrize Cache.get with the correct conversion function"""
         return int(self._redis.get(key).decode("utf-8"))
