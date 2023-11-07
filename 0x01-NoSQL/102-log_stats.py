@@ -32,8 +32,8 @@ if __name__ == "__main__":
         }
     ])
 
-    for i in IPs_counter:
-        print("\t{}: {}".format(i.get('_id'), i.get('count')))
+    for count in IPs_counter:
+        print("\t{}: {}".format(count.get('_id'), count.get('count')))
         x += 1
         if x > 9:
             break
